@@ -1,10 +1,9 @@
 import sys
 
 if not(len(sys.argv) == 2):
-    print("Erorr\n")
+    print("Error \n")
     exit(1)
     
-#modify a key for more comfortable usage
 if int(sys.argv[1]) <= 26:
     key = int(sys.argv[1])
 else:
@@ -12,7 +11,6 @@ else:
     
 text = input("plaintext: ")
 
-#encrypt text
 for i in range(len(text)):
     if(text[i].isalpha()): 
         if (text[i].isupper()):
