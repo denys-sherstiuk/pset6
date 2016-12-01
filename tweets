@@ -1,0 +1,26 @@
+import sys
+from analyzer import Analyzer
+import helpers
+from termcolor import colored
+
+if len(sys.argv) != 2:
+        sys.exit("Usage: ./tweets @screen_name")
+
+tweets = helpers.get_user_timeline(sys.argv[1], 50)
+
+analyzer = Analyzer()
+
+try:
+    for tweet in tweets:
+        
+        score = analyzer.analyze(tweet)
+        
+        if score > 0.0:
+            print (colored(score, "blue"), colored(tweet, "blue"))
+        else if score < 0.0:
+            print (colored(score, "black"), colored(tweet, "black"))
+        else:
+            print (colored(score, "white"), colored(tweet, "white"))
+
+except TypeError:
+    sys.exit("Error")
